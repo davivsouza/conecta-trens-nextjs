@@ -8,9 +8,17 @@ export default {
   ],
   theme: {
     extend: {
+      spacing: {
+        "104px": "104px",
+        "314px": "314px",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "interval-min": "#c3ff3d",
+        primary: "#c3ff3d",
+      },
+      backgroundImage: {
+        "gradient-horario":
+          "linear-gradient(to bottom, #ffffff0d, #ffffff26)",
       },
     },
   },
