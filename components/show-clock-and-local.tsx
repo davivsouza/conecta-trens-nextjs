@@ -1,8 +1,8 @@
 'use client'
-import { Search } from "lucide-react";
-import { useRef } from "react";
 import { estacoes } from "@/components/linhas-form";
+import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
 
 interface Props {
   showClockAndLocal: "local" | "clock";
@@ -26,7 +26,7 @@ export function ShowClockAndLocal({ showClockAndLocal }: Props) {
       {showClockAndLocal === "local" && (
         <div className="flex z-20 absolute right-0 top-[125px]">
           <form
-            className="bg-white flex h-[55px] w-[317px] items-center rounded-[50px] relative"
+            className="hidden md:flex  bg-white  h-[55px] w-[317px] items-center rounded-[50px] relative "
             role="search"
           >
             <select
