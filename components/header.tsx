@@ -31,10 +31,10 @@ export function Header({ isHome, isContact }: Props) {
 
         </nav>
 
-        <div className="flex w-full justify-between items-center space-x-4">
-          <div className="py-5 px-7 bg-gradient-horario justify-end rounded-full ml-4">
+        <div className="flex w-full justify-end md:justify-between items-center space-x-4">
+          <div className="md:py-5 md:px-7 p-4 bg-gradient-horario md:justify-end rounded-full ml-4">
             <button
-              className="md:hidden cursor-pointer flex justify-center items-center   w-[40px] h-[40px]"
+              className="md:hidden cursor-pointer flex justify-center items-center w-[40px] h-[40px]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <Menu size={32} color="white" />
