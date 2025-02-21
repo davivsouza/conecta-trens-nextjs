@@ -37,7 +37,7 @@ export function Header({ isHome, isContact }: Props) {
               className="md:hidden cursor-pointer flex justify-center items-center w-[40px] h-[40px]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              <Menu size={32} color="white" />
+              <Menu size={32} color={isContact ? "black" : "white"} />
             </button>
 
             <ul
@@ -106,7 +106,7 @@ export function Header({ isHome, isContact }: Props) {
           <li >
             <Link
               href="/contato"
-              className="text-white"
+              className="text-white text-lg"
             >
               Contate-nos
             </Link>
