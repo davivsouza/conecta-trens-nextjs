@@ -9,7 +9,7 @@ import {
   interface Props {
     destination: string;
     origin: string;
-    travelMode:  google.maps.TravelMode
+    travelMode: any;
   }
   
   export function Directions({ origin, destination, travelMode }: Props) {

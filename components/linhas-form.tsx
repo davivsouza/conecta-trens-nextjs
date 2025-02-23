@@ -76,9 +76,7 @@ const formas_de_viagem = [
 ];
 
 export function LinhasForm({ label, title, isEstacoes }: Props) {
-  const [selectedTravelMode, setSelectedTravelMode] =
-    useState<google.maps.TravelMode>("DRIVING");
-  const router = useRouter();
+  const [selectedTravelMode, setSelectedTravelMode] = useState("DRIVING");
   const destinationRef = useRef<HTMLSelectElement>(null);
   const originRef = useRef<HTMLInputElement>(null);
 
