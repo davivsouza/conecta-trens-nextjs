@@ -11,7 +11,6 @@ import {
 
 import { Directions } from "@/components/directions";
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
@@ -205,10 +204,11 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
                     <div
                       key={item.id}
                       title={item.description}
-                      className={`p-3 cursor-pointer border-2 rounded-[12px] ${item.travel_mode === selectedTravelMode
-                        ? "border-none bg-[#c9f95e]"
-                        : "border-gray-300 bg-transparent"
-                        }`}
+                      className={`p-3 cursor-pointer border-2 rounded-[12px] ${
+                        item.travel_mode === selectedTravelMode
+                          ? "border-none bg-[#c9f95e]"
+                          : "border-gray-300 bg-transparent"
+                      }`}
                       onClick={() => setSelectedTravelMode(item.travel_mode)}
                     >
                       <item.icon className="text-black" />
