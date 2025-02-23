@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
@@ -32,7 +33,7 @@ export function CardFastActions(props: Props) {
       </div>
 
       <div className="relative">
-        <img
+        <Image
           src={props.imgName}
           alt="Mulher esperando na plataforma da estação"
           className="w-full rounded-[40px] p-1 object-cover relative top-14"

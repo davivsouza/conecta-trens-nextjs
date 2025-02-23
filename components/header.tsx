@@ -2,6 +2,7 @@
 
 import { ShowClockAndLocal } from "@/components/show-clock-and-local";
 import { Clock, MapPin, Menu } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -21,14 +22,12 @@ export function Header({ isHome, isContact }: Props) {
       <nav className="w-full flex justify-between items-center">
         <nav className="flex items-center  gap-3">
           <Link href="/">
-            <img
+            <Image
               src={isContact ? "./logo2.svg" : "./logo.svg"}
               alt="Logo ConectaTrens - Clique para voltar à página inicial"
               className="w-[65px] h-[65px]"
             />
           </Link>
-
-
         </nav>
 
         <div className="flex w-full justify-end md:justify-between items-center space-x-4">
@@ -41,8 +40,9 @@ export function Header({ isHome, isContact }: Props) {
             </button>
 
             <ul
-              className={`hidden md:flex space-x-4 ${isContact ? "text-black" : "text-white"
-                }`}
+              className={`hidden md:flex space-x-4 ${
+                isContact ? "text-black" : "text-white"
+              }`}
             >
               <li>
                 <Link href="/">Home</Link>
@@ -58,26 +58,30 @@ export function Header({ isHome, isContact }: Props) {
           <div className="flex items-center gap-8">
             <Link
               href="/contato"
-              className={`hidden md:flex bg-gradient-horario py-5 px-7 rounded-[32px] ${isContact ? "text-black" : "text-white"}`}
+              className={`hidden md:flex bg-gradient-horario py-5 px-7 rounded-[32px] ${
+                isContact ? "text-black" : "text-white"
+              }`}
             >
               Contate-nos
             </Link>
             {isHome && (
               <>
                 <button
-                  className={`hidden w-[55px] h-[55px] md:flex items-center justify-center rounded-full transition ${showClockAndLocal === "local"
-                    ? "bg-white text-black"
-                    : "bg-gradient-horario text-white"
-                    }`}
+                  className={`hidden w-[55px] h-[55px] md:flex items-center justify-center rounded-full transition ${
+                    showClockAndLocal === "local"
+                      ? "bg-white text-black"
+                      : "bg-gradient-horario text-white"
+                  }`}
                   onClick={() => setShowClockAndLocal("local")}
                 >
                   <MapPin />
                 </button>
                 <button
-                  className={`hidden w-[55px] h-[55px] md:flex items-center justify-center rounded-full transition ${showClockAndLocal === "clock"
-                    ? "bg-white text-black"
-                    : "bg-gradient-horario text-white"
-                    }`}
+                  className={`hidden w-[55px] h-[55px] md:flex items-center justify-center rounded-full transition ${
+                    showClockAndLocal === "clock"
+                      ? "bg-white text-black"
+                      : "bg-gradient-horario text-white"
+                  }`}
                   onClick={() => setShowClockAndLocal("clock")}
                 >
                   <Clock />
@@ -91,23 +95,27 @@ export function Header({ isHome, isContact }: Props) {
       {/* Menu Mobile */}
       {isMenuOpen && (
         <ul
-          className={`absolute top-[100px] right-10 w-[400px] rounded-xl bg-black flex flex-col items-center  gap-8 py-6 md:hidden transition-transform ${isMenuOpen ? "translate-y-0" : "-translate-y-full"
-            }`}
+          className={`absolute top-[100px] right-10 w-[400px] rounded-xl bg-black flex flex-col items-center  gap-8 py-6 md:hidden transition-transform ${
+            isMenuOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
         >
-          <li >
-            <Link className="text-white text-lg" href="/">Home</Link>
+          <li>
+            <Link className="text-white text-lg" href="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link className="text-white text-lg" href="/estacoes">Estações</Link>
+            <Link className="text-white text-lg" href="/estacoes">
+              Estações
+            </Link>
           </li>
-          <li >
-            <Link className="text-white text-lg" href="/comprovantes">Comprovantes</Link>
+          <li>
+            <Link className="text-white text-lg" href="/comprovantes">
+              Comprovantes
+            </Link>
           </li>
-          <li >
-            <Link
-              href="/contato"
-              className="text-white text-lg"
-            >
+          <li>
+            <Link href="/contato" className="text-white text-lg">
               Contate-nos
             </Link>
           </li>

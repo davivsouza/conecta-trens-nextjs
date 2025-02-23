@@ -1,4 +1,5 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -8,7 +9,7 @@ export function Footer() {
         {/* Coluna 1 - Logo e Descrição */}
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="./logo.svg"
               alt="Logo ConectaTrens"
               className="w-[50px]"

@@ -6,17 +6,34 @@ import {
   CarFront,
   Footprints,
   Locate,
+  LucideProps,
   MapPin,
 } from "lucide-react";
 
 import { Directions } from "@/components/directions";
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
-import { useEffect, useRef, useState } from "react";
+import {
+  ForwardRefExoticComponent,
+  RefAttributes,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface Props {
   label: string;
   title: string;
   isEstacoes?: boolean;
+}
+
+interface FormasDeViagem {
+  id: number;
+  name: string;
+  description: string;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
+  travel_mode: google.maps.TravelMode;
 }
 
 export const estacoes = [
@@ -43,39 +60,7 @@ export const estacoes = [
   },
 ];
 
-const formas_de_viagem = [
-  {
-    id: 1,
-    name: "DRIVING",
-    description: "Carro",
-    icon: CarFront,
-    travel_mode: "DRIVING",
-  },
-  {
-    id: 2,
-    name: "WALKING",
-    description: "Andando",
-    icon: Footprints,
-    travel_mode: "WALKING",
-  },
-  {
-    id: 3,
-    name: "TRANSIT",
-    description: "Transporte público",
-    icon: Bus,
-    travel_mode: "TRANSIT",
-  },
-  {
-    id: 4,
-    description: "Bicicleta",
-    name: "BICYCLING",
-    icon: Bike,
-    travel_mode: "BICYCLING",
-  },
-];
-
 export function LinhasForm({ label, title, isEstacoes }: Props) {
-  const [selectedTravelMode, setSelectedTravelMode] = useState("DRIVING");
   const destinationRef = useRef<HTMLSelectElement>(null);
   const originRef = useRef<HTMLInputElement>(null);
 
@@ -84,6 +69,45 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
   const [routeUpdated, setRouteUpdated] = useState(false);
   const [userLocation, setUserLocation] = useState("");
 
+  const [googleLoaded, setGoogleLoaded] = useState(false);
+  const [selectedTravelMode, setSelectedTravelMode] =
+    useState<google.maps.TravelMode | null>(null);
+  const [formasDeViagem, setFormasDeViagem] = useState<FormasDeViagem[]>([]);
+
+  useEffect(() => {
+    if (googleLoaded) {
+      setFormasDeViagem([
+        {
+          id: 1,
+          name: "DRIVING",
+          description: "Carro",
+          icon: CarFront,
+          travel_mode: google.maps.TravelMode.DRIVING,
+        },
+        {
+          id: 2,
+          name: "WALKING",
+          description: "Andando",
+          icon: Footprints,
+          travel_mode: google.maps.TravelMode.WALKING,
+        },
+        {
+          id: 3,
+          name: "TRANSIT",
+          description: "Transporte público",
+          icon: Bus,
+          travel_mode: google.maps.TravelMode.TRANSIT,
+        },
+        {
+          id: 4,
+          description: "Bicicleta",
+          name: "BICYCLING",
+          icon: Bike,
+          travel_mode: google.maps.TravelMode.BICYCLING,
+        },
+      ]);
+    }
+  }, [googleLoaded]);
   function getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -120,6 +144,18 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
   useEffect(() => {
     getUserLocation();
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.google) {
+      setGoogleLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (googleLoaded) {
+      setSelectedTravelMode(google.maps.TravelMode.DRIVING);
+    }
+  }, [googleLoaded]);
 
   return (
     <>
@@ -200,20 +236,21 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
                   </div>
                 </form>
                 <div className="flex gap-3 py-5">
-                  {formas_de_viagem.map((item) => (
-                    <div
-                      key={item.id}
-                      title={item.description}
-                      className={`p-3 cursor-pointer border-2 rounded-[12px] ${
-                        item.travel_mode === selectedTravelMode
-                          ? "border-none bg-[#c9f95e]"
-                          : "border-gray-300 bg-transparent"
-                      }`}
-                      onClick={() => setSelectedTravelMode(item.travel_mode)}
-                    >
-                      <item.icon className="text-black" />
-                    </div>
-                  ))}
+                  {googleLoaded &&
+                    formasDeViagem.map((item) => (
+                      <div
+                        key={item.id}
+                        title={item.description}
+                        className={`p-3 cursor-pointer border-2 rounded-[12px] ${
+                          item.travel_mode === selectedTravelMode
+                            ? "border-none bg-[#c9f95e]"
+                            : "border-gray-300 bg-transparent"
+                        }`}
+                        onClick={() => setSelectedTravelMode(item.travel_mode)}
+                      >
+                        <item.icon className="text-black" />
+                      </div>
+                    ))}
                 </div>
                 <div className="w-full flex justify-end">
                   <button
@@ -246,7 +283,7 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
                 key={String(routeUpdated)}
                 origin={userLocation}
                 destination={destinationValue}
-                travelMode={selectedTravelMode}
+                travelMode={selectedTravelMode!}
               />
             </Map>
           </APIProvider>
