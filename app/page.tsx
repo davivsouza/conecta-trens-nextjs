@@ -42,7 +42,7 @@ export default function Home() {
               href="/estacoes"
               title="Preciso encontrar para onde vou"
               description="Veja as estações e linhas que atuamos e como você pode chegar nela."
-              imgName="./woman-waiting.png"
+              imgName="woman-waiting.png"
               tag1="Estações"
               tag2="Linhas"
             />
@@ -51,15 +51,15 @@ export default function Home() {
               title="Preciso do meu comprovante"
               description="Caso tenha acontecido algum atraso no trem você pode gerar um
               comprovante."
-              imgName="./time.jpg"
+              imgName="time.jpg"
               tag1="Documento"
               tag2="Atraso"
             />
             <CardFastActions
-              href="/contato"
+              href="contato"
               title="Preciso relatar um problema"
               description="Caso tenha ocorrido algum problema com você use está opção para nos contar."
-              imgName="./train.jpg"
+              imgName="train.jpg"
               tag1="Problema"
               tag2="Estação"
             />

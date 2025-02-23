@@ -34,7 +34,7 @@ export function CardFastActions(props: Props) {
 
       <div className="relative">
         <Image
-          src={props.imgName}
+          src={`/${props.imgName}`}
           alt="Mulher esperando na plataforma da estação"
           className="w-full rounded-[40px] p-1 object-cover relative top-14"
         />
