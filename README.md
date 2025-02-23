@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Documentação do Projeto ConectaTrens 🚂
 
-## Getting Started
+## Visão Geral
+O ConectaTrens é um sistema web desenvolvido para facilitar a experiência dos usuários do transporte ferroviário. O projeto possui uma interface intuitiva e responsiva, focada em fornecer informações sobre estações, horários e serviços relacionados ao transporte de trens.
 
-First, run the development server:
+## Estrutura do Projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Páginas Principais
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Home (index.html)**
+   - Página inicial com apresentação do sistema
+   - Seção de ações rápidas
+   - FAQ (Perguntas Frequentes)
+   - Busca rápida de estações
+   - Informações de horários de funcionamento
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Estações (estacoes.html)**
+   - Mapa das linhas de trem
+   - Sistema de busca de estações
+   - Filtros por linha e estação
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Comprovantes (comprovantes.html)**
+   - Sistema para geração de comprovantes de atraso
+   - Listagem por linha de trem
+   - Status das ocorrências
 
-## Learn More
+4. **Contato (contato.html)**
+   - Formulário de contato
+   - Informações de atendimento
 
-To learn more about Next.js, take a look at the following resources:
+5. **Integrantes (integrantes.html)**
+   - Informações sobre a equipe do projeto
+   - Links para redes sociais dos desenvolvedores
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Componentes Comuns
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Header
+- Logo da empresa
+- Menu de navegação responsivo
+- Links rápidos para contato
 
-## Deploy on Vercel
+#### Footer
+- Informações de contato
+- Links de navegação
+- Horários de funcionamento
+- Endereço
+- Copyright
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Recursos de Acessibilidade
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto implementa diversas práticas de acessibilidade:
+
+- Uso apropriado de tags semânticas (`header`, `main`, `footer`, `nav`)
+- Atributos ARIA para melhor navegação por leitores de tela
+- Labels descritivos para formulários
+- Textos alternativos para imagens
+- Estrutura hierárquica de cabeçalhos
+
+## Tecnologias Utilizadas
+
+- HTML5 semântico
+- CSS3 para estilização
+- JavaScript para interatividade
+- Biblioteca Lucide para ícones
+- Fontes do Google Fonts (Inter e Inter Tight)
+
+## Instruções de Uso
+
+### Para Desenvolvedores
+
+1. Clone o repositório
+2. Estrutura de arquivos:
+   ```
+   ├── index.html
+   ├── estacoes.html
+   ├── comprovantes.html
+   ├── contato.html
+   ├── integrantes.html
+   ├── css/
+   │   ├── global.css
+   │   ├── header.css
+   │   ├── home.css
+   │   ├── faq.css
+   │   ├── footer.css
+   │   ├── estacoes.css
+   │   ├── comprovante.css
+   │   └── contato.css
+   ├── js/
+   │   ├── faq.js
+   │   └── menu.js
+   └── img/
+       └── [arquivos de imagem]
+   ```
+
+### Para Usuários
+
+1. **Busca de Estações**
+   - Use o campo de busca na página inicial ou na seção de estações
+   - Selecione a linha desejada no filtro
+   - Digite o nome da estação
+
+2. **Geração de Comprovantes**
+   - Acesse a página de comprovantes
+   - Selecione a linha e estação
+   - Baixe o comprovante disponível
+
+3. **Contato**
+   - Preencha o formulário de contato
+   - Todos os campos marcados com * são obrigatórios
+
+## Funcionalidades Principais
+
+- Busca de estações e linhas
+- Sistema de geração de comprovantes
+- FAQ interativo
+- Formulário de contato
+- Informações de horários e funcionamento
+- Menu responsivo para dispositivos móveis
+
+## Manutenção
+
+Para adicionar novas funcionalidades ou fazer alterações:
+
+1. Mantenha a estrutura semântica do HTML
+2. Siga os padrões de acessibilidade estabelecidos
+3. Atualize a documentação quando necessário
+4. Teste em diferentes dispositivos e navegadores
+
+## Status do Projeto
+
+O projeto está em desenvolvimento contínuo, com algumas seções marcadas como "Em Desenvolvimento" (como o mapa na página de estações).

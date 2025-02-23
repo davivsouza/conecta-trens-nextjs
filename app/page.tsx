@@ -1,9 +1,7 @@
-import { ArrowRight, Search } from "lucide-react";
+import { CardFastActions } from "@/components/card-fast-actions";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import Link from "next/link";
-import { CardFastActions } from "@/components/card-fast-actions";
 
 export default function Home() {
   return (

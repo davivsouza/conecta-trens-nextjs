@@ -9,10 +9,10 @@ import {
   MapPin,
 } from "lucide-react";
 
-import { APIProvider, Map } from "@vis.gl/react-google-maps";
-import { useEffect, useRef, useState } from "react";
 import { Directions } from "@/components/directions";
+import { APIProvider, Map } from "@vis.gl/react-google-maps";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
   label: string;
@@ -125,7 +125,7 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
   return (
     <>
       <section
-        className="relative bg-[url('/subway.jpg')] h-[600px] w-full bg-cover bg-no-repeat"
+        className="relative bg-[url('/subway.jpg')] h-[750px] w-full bg-cover bg-no-repeat"
         aria-labelledby="mapa-titulo"
       >
         <div className="absolute inset-0 bg-black/60" />
@@ -137,7 +137,7 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
             >
               {title}
             </h1>
-            <div className="absolute w-[90vw] left-1/2 transform -translate-x-1/2 bg-white rounded-[30px] p-5 mt-5">
+            <div className="absolute w-[90vw] left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-[30px] p-5 mt-5">
               <div className="w-full mx-auto">
                 <strong className="text-[28px] text-black">{label}</strong>
                 <form
@@ -205,11 +205,10 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
                     <div
                       key={item.id}
                       title={item.description}
-                      className={`p-3 cursor-pointer border-2 rounded-[12px] ${
-                        item.travel_mode === selectedTravelMode
-                          ? "border-none bg-[#c9f95e]"
-                          : "border-gray-300 bg-transparent"
-                      }`}
+                      className={`p-3 cursor-pointer border-2 rounded-[12px] ${item.travel_mode === selectedTravelMode
+                        ? "border-none bg-[#c9f95e]"
+                        : "border-gray-300 bg-transparent"
+                        }`}
                       onClick={() => setSelectedTravelMode(item.travel_mode)}
                     >
                       <item.icon className="text-black" />

@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Url } from "url";
 
 interface Props {
   href: string;
@@ -36,9 +35,9 @@ export function CardFastActions(props: Props) {
         <img
           src={props.imgName}
           alt="Mulher esperando na plataforma da estação"
-          className="w-full rounded-[40px] p-1 object-cover"
+          className="w-full rounded-[40px] p-1 object-cover relative top-14"
         />
-        <button className=" bottom-20 left-8 h-[55px] w-[150px] flex items-center rounded-[50px] border-none text-base font-semibold text-black pl-6 pr-12 relative bg-white">
+        <button className=" bottom-8 left-8 h-[55px] w-[150px] flex items-center rounded-[50px] border-none text-base font-semibold text-black pl-6 pr-12 relative bg-white">
           Ver mais
           <div className="w-[50px] h-[50px] bg-black rounded-full flex items-center justify-center text-white absolute right-1">
             <ArrowRight />
