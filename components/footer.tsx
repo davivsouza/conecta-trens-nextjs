@@ -13,6 +13,8 @@ export function Footer() {
               src="./logo.svg"
               alt="Logo ConectaTrens"
               className="w-[50px]"
+              width={50}
+              height={50}
             />
             <strong className="text-[30px] text-white">ConectaTrens</strong>
           </div>

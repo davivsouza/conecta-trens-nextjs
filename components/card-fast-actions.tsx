@@ -16,7 +16,7 @@ export function CardFastActions(props: Props) {
       href={props.href}
       className="group max-w-[440px] w-full  relative rounded-[40px] bg-[#f3f0e9] transition-all duration-200 hover:bg-[#c3ff3d] flex flex-col justify-between"
     >
-      <div className="p-6 flex flex-col gap-5 h-[400px] md:h-[340px]">
+      <div className="p-6 flex flex-col gap-5 h-[230px]   md:h-[340px]">
         <div className="flex gap-2">
           <div className="bg-white rounded-[20px] px-4 py-2">
             <p className="text-sm">{props.tag1}</p>
@@ -26,10 +26,10 @@ export function CardFastActions(props: Props) {
           </div>
         </div>
 
-        <h1 className="text-3xl lg:text-[35px] text-black font-bold leading-tight">
+        <h1 className="text-2xl lg:text-[35px] text-black font-bold leading-tight">
           {props.title}
         </h1>
-        <p className="text-lg text-black">{props.description}</p>
+        <p className="text-md lg:text-lg text-black">{props.description}</p>
       </div>
 
       <div className="relative">
@@ -37,6 +37,8 @@ export function CardFastActions(props: Props) {
           src={`/${props.imgName}`}
           alt="Mulher esperando na plataforma da estação"
           className="w-full rounded-[40px] p-1 object-cover relative top-14"
+          width={200}
+          height={200}
         />
         <button className=" bottom-8 left-8 h-[55px] w-[150px] flex items-center rounded-[50px] border-none text-base font-semibold text-black pl-6 pr-12 relative bg-white">
           Ver mais

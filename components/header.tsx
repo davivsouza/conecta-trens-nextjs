@@ -26,6 +26,8 @@ export function Header({ isHome, isContact }: Props) {
               src={isContact ? "./logo2.svg" : "./logo.svg"}
               alt="Logo ConectaTrens - Clique para voltar à página inicial"
               className="w-[65px] h-[65px]"
+              width={65}
+              height={65}
             />
           </Link>
         </nav>
@@ -95,7 +97,7 @@ export function Header({ isHome, isContact }: Props) {
       {/* Menu Mobile */}
       {isMenuOpen && (
         <ul
-          className={`absolute top-[100px] right-10 w-[400px] rounded-xl bg-black flex flex-col items-center  gap-8 py-6 md:hidden transition-transform ${
+          className={`absolute top-[100px] right-5 w-[80%] rounded-xl bg-black flex flex-col items-center  gap-8 py-6 md:hidden transition-transform ${
             isMenuOpen ? "translate-y-0" : "-translate-y-full"
           }`}
         >

@@ -168,17 +168,17 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
           <div className="absolute top-[182px] left-1/2 transform -translate-x-1/2 w-full max-w-[1000px]">
             <h1
               id="mapa-titulo"
-              className="text-[50px] text-white leading-[1.2] font-bold"
+              className="text-[30px] ml-2 md:ml-0 md:text-[50px] text-white leading-[1.2] font-bold"
             >
               {title}
             </h1>
-            <div className="absolute w-[90vw] left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-[30px] p-5 mt-5">
+            <div className="absolute w-[90vw] left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-[30px] p-3 md:p-5 mt-5">
               <div className="w-full mx-auto">
                 <strong className="text-[28px] text-black">{label}</strong>
                 <form
                   role="search"
                   aria-labelledby="busca-titulo"
-                  className="mt-10 flex gap-3"
+                  className="mt-10 flex flex-col md:flex-row gap-3"
                 >
                   <div className="w-full flex flex-col gap-2">
                     <label
