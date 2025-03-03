@@ -1,0 +1,71 @@
+"steps": [
+                        {
+                            "distance": {
+                                "text": "25,2 km",
+                                "value": 25193
+                            },
+                            "duration": {
+                                "text": "37 minutos",
+                                "value": 2220
+                            },
+                            "end_location": {
+                                "lat": -23.5352686,
+                                "lng": -46.6353362
+                            },
+                            "html_instructions": "Trem em direção a Francisco Morato",
+                            "polyline": {
+                                "points": ""
+                            },
+                            "start_location": {
+                                "lat": -23.6681812,
+                                "lng": -46.4617156
+                            },
+                            "transit_details": {
+                                "arrival_stop": {
+                                    "location": {
+                                        "lat": -23.5352686,
+                                        "lng": -46.6353362
+                                    },
+                                    "name": "Luz"
+                                },
+                                "arrival_time": {
+                                    "text": "14:22",
+                                    "time_zone": "America/Sao_Paulo",
+                                    "value": 1741022520
+                                },
+                                "departure_stop": {
+                                    "location": {
+                                        "lat": -23.6681812,
+                                        "lng": -46.4617156
+                                    },
+                                    "name": "Estação Mauá"
+                                },
+                                "departure_time": {
+                                    "text": "13:45",
+                                    "time_zone": "America/Sao_Paulo",
+                                    "value": 1741020300
+                                },
+                                "headsign": "Francisco Morato",
+                                "line": {
+                                    "agencies": [
+                                        {
+                                            "name": "CPTM",
+                                            "phone": "011 55 800 055 0121",
+                                            "url": "https://www.cptm.sp.gov.br/"
+                                        }
+                                    ],
+                                    "color": "#ae000a",
+                                    "name": "Jundiaí / Rio Grande da Serra",
+                                    "short_name": "Linha 710",
+                                    "text_color": "#ffffff",
+                                    "vehicle": {
+                                        "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/rail2.png",
+                                        "local_icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/br-sao-paulo-cptm.png",
+                                        "name": "Trem",
+                                        "type": "HEAVY_RAIL"
+                                    }
+                                },
+                                "num_stops": 10
+                            },
+                            "travel_mode": "TRANSIT"
+                        },
