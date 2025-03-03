@@ -223,13 +223,13 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
 
   useEffect(() => {
     getUserLocation();
-  }, [getUserLocation]);
+  });
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.google) {
       setGoogleLoaded(true);
     }
-  }, []);
+  });
 
   // Atualizar o contador de minutos a cada minuto
   useEffect(() => {
@@ -248,7 +248,7 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
     }, 60000); // Atualiza a cada minuto
 
     return () => clearInterval(timer);
-  }, [transitInfo, fetchTransitData]);
+  }, [transitInfo]);
 
   return (
     <>
