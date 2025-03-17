@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { VLibrasComponent } from "@/components/vlibras";
+import { VoiceNavigator } from "@/components/voice-navigator";
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -22,6 +23,7 @@ export default function RootLayout({
       <link rel="icon" href="/logo2.svg" sizes="any" />
       <body className={`${inter.className} antialiased`}>
         {children}
+        <VoiceNavigator />
         <VLibrasComponent />
       </body>
     </html>
