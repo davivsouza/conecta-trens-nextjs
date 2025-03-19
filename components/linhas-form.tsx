@@ -257,7 +257,8 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
         aria-labelledby="mapa-titulo"
       >
         <div className="absolute inset-0 bg-black/60" />
-        <div className="max-w-[1000px] mx-auto relative">
+        <div className="max-w-[1000px] mx-auto  relative
+        ">
           <div className="absolute top-[182px] left-1/2 transform -translate-x-1/2 w-full max-w-[1000px]">
             <h1
               id="mapa-titulo"
