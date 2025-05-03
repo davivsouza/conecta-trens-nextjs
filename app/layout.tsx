@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { VLibrasComponent } from "@/components/vlibras";
 import { VoiceNavigator } from "@/components/voice-navigator";
+import { Toaster } from "sonner";
 const inter = Inter({
   subsets: ["latin"],
 });
@@ -25,6 +26,7 @@ export default function RootLayout({
         {children}
         <VoiceNavigator />
         <VLibrasComponent />
+        <Toaster richColors />
       </body>
     </html>
   );

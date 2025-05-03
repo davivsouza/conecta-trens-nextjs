@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Sua API key deve estar em variáveis de ambiente
 
 export async function GET(req: NextRequest) {
   try {
@@ -41,5 +40,4 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// Opcional: se você estiver usando o Next.js 13/14 com App Router, precisa exportar também:
 export const dynamic = 'force-dynamic'; // Garante

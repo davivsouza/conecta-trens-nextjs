@@ -17,6 +17,8 @@ export function Header({ isHome, isContact }: Props) {
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem("user")!);
+
   return (
     <header className="w-full max-w-[1000px] mx-auto h-[110px] flex items-center justify-between px-4 absolute top-0 left-1/2 transform -translate-x-1/2 z-20">
       <nav className="w-full flex justify-between items-center">
@@ -55,6 +57,26 @@ export function Header({ isHome, isContact }: Props) {
               <li>
                 <Link href="/comprovantes">Comprovantes</Link>
               </li>
+              {user && (
+                <>
+                  <li>
+                    <Link href="/login">{user.nome}</Link>
+                  </li>
+                  <li
+                    onClick={() => localStorage.removeItem("user")}
+                    className="cursor-pointer text-red-500"
+                  >
+                    Sair
+                  </li>
+                </>
+              )}
+              {!user && (
+                <li>
+                  <Link href="/login" className="cursor-pointer">
+                    Login/Cadastro
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
           <div className="flex items-center gap-8">
