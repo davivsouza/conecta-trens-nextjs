@@ -54,6 +54,10 @@ export default function Contato() {
 
     if (response) {
       toast.success("Reclamação enviada com sucesso!");
+      setEstacaoSelecionada(null);
+      setLinhaSelecionada(null);
+      setTipo("");
+      setMessage("");
     }
   }
 
