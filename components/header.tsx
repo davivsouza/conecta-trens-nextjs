@@ -1,6 +1,7 @@
 "use client";
 
 import { ShowClockAndLocal } from "@/components/show-clock-and-local";
+import { useAuthContext } from "@/hooks/useAuthContext";
 import { Clock, MapPin, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export function Header({ isHome, isContact }: Props) {
-  const [user, setUser] = useState<any>();
+  const { user } = useAuthContext();
   const [showClockAndLocal, setShowClockAndLocal] = useState<"local" | "clock">(
     "local"
   );
@@ -21,13 +22,9 @@ export function Header({ isHome, isContact }: Props) {
   const router = useRouter();
   function handleLogout() {
     localStorage.removeItem("user");
+    window.location.reload();
     router.push("/login");
   }
-
-  useEffect(() => {
-    const localUserData = JSON.parse(localStorage.getItem("user")!);
-    setUser(localUserData);
-  }, []);
 
   return (
     <header className="w-full max-w-[1000px] mx-auto h-[110px] flex items-center justify-between px-4 absolute top-0 left-1/2 transform -translate-x-1/2 z-20">
@@ -67,7 +64,7 @@ export function Header({ isHome, isContact }: Props) {
               <li>
                 <Link href="/comprovantes">Comprovantes</Link>
               </li>
-              {user && (
+              {user.nome && (
                 <>
                   <li>
                     <Link href="/login">{user.nome}</Link>
@@ -80,7 +77,7 @@ export function Header({ isHome, isContact }: Props) {
                   </li>
                 </>
               )}
-              {!user && (
+              {!user.nome && (
                 <li>
                   <Link href="/login" className="cursor-pointer">
                     Login/Cadastro
@@ -91,12 +88,12 @@ export function Header({ isHome, isContact }: Props) {
           </div>
           <div className="flex items-center gap-8">
             <Link
-              href="/contato"
+              href="/reclamacao"
               className={`hidden md:flex bg-gradient-horario py-5 px-7 rounded-[32px] ${
                 isContact ? "text-black" : "text-white"
               }`}
             >
-              Contate-nos
+              Faça sua reclamação
             </Link>
             {isHome && (
               <>
@@ -149,8 +146,8 @@ export function Header({ isHome, isContact }: Props) {
             </Link>
           </li>
           <li>
-            <Link href="/contato" className="text-white text-lg">
-              Contate-nos
+            <Link href="/reclamacao" className="text-white text-lg">
+              Faça sua reclamação
             </Link>
           </li>
         </ul>
