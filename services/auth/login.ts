@@ -8,8 +8,6 @@ interface LoginProps {
 }
 
 export async function login(loginData: LoginProps) {
-  console.log("Login DATA >>>", loginData);
-
   try {
     const response = await api.post("/auth/login", loginData);
     localStorage.setItem("user", JSON.stringify(response.data));

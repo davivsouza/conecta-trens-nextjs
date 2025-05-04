@@ -158,7 +158,6 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
       }
 
       const data = await response.json();
-      console.log("RESPOSTA >>>", data);
 
       // Processar a resposta para extrair os dados de trânsito
       if (
