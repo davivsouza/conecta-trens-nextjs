@@ -6,7 +6,7 @@ import { Clock, MapPin, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   isHome?: boolean;

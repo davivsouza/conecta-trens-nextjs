@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { AuthForm } from "@/components/auth-form";
 import { Header } from "@/components/header";
 
@@ -7,7 +6,6 @@ export default function Cadastro() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header isContact />
-      {/* Cadastro Form */}
       <div className="flex-1 flex items-center justify-center p-4 py-8">
         <div className="w-full max-w-md bg-gray-100 rounded-3xl p-8">
           <div className="text-center mb-8">

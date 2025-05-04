@@ -32,7 +32,7 @@ export default function Comprovantes() {
       setComprovantes(comprovantesData);
     }
     fetchData();
-  }, []);
+  }, [user.usuario_id]);
 
   async function handleEmitirComprovante() {
     if (!linhaSelecionada || !estacaoSelecionada) {
