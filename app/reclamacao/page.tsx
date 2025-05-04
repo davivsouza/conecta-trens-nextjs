@@ -3,22 +3,52 @@ import { ArrowRight } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { useAuthContext } from "@/hooks/useAuthContext";
-import { useState } from "react";
-import { makeReclamacao, ReclamacaoData } from "@/services/reclamacao";
+import { useEffect, useState } from "react";
+import {
+  makeReclamacao,
+  ReclamacaoData,
+} from "@/services/reclamacao/criar-reclamacao";
 import { toast } from "sonner";
+import { listLinhas } from "@/services/linha/list-linhas";
+import { listEstacoes } from "@/services/estacao/list-estacoes";
+
+// Suponha que existam essas funções para buscar linhas e estações
 
 export default function Contato() {
   const { user } = useAuthContext();
+
   const [tipo, setTipo] = useState("");
   const [message, setMessage] = useState("");
+  const [linhas, setLinhas] = useState([]);
+  const [estacoes, setEstacoes] = useState([]);
+  const [linhaSelecionada, setLinhaSelecionada] = useState<number | null>(null);
+  const [estacaoSelecionada, setEstacaoSelecionada] = useState<number | null>(
+    null
+  );
+
+  useEffect(() => {
+    async function fetchData() {
+      const linhasData = await listLinhas();
+      const estacoesData = await listEstacoes();
+      setLinhas(linhasData);
+      setEstacoes(estacoesData);
+    }
+    fetchData();
+  }, []);
+
   async function handleSendMessage() {
+    if (!linhaSelecionada || !estacaoSelecionada) {
+      toast.error("Selecione uma linha e uma estação.");
+      return;
+    }
+
     const body: ReclamacaoData = {
       tipo,
       descricao: message,
-      status: "Em andamento",
+      status: "Em Análise",
       usuario_id: user.usuario_id,
-      estacao_id: 1,
-      linha_id: 1,
+      estacao_id: estacaoSelecionada,
+      linha_id: linhaSelecionada,
     };
     const response = await makeReclamacao(body);
 
@@ -26,6 +56,7 @@ export default function Contato() {
       toast.success("Reclamação enviada com sucesso!");
     }
   }
+
   return (
     <>
       <Header isContact />
@@ -39,11 +70,9 @@ export default function Contato() {
           aria-label="Formulário de contato"
         >
           <div className="flex flex-col">
+            {/* Tipo de problema */}
             <label htmlFor="tipo" className="font-medium mb-2">
-              Tipo de problema{" "}
-              <span className="text-red-600" aria-label="campo obrigatório">
-                *
-              </span>
+              Tipo de problema <span className="text-red-600">*</span>
             </label>
             <input
               type="text"
@@ -51,14 +80,50 @@ export default function Contato() {
               id="tipo"
               className="p-4 bg-transparent border border-gray-300 rounded-lg w-full text-lg font-medium"
               placeholder="Digite o tipo de problema aqui"
-              aria-required="true"
               onChange={(ev) => setTipo(ev.target.value)}
             />
+
+            {/* Linha */}
+            <label htmlFor="linha" className="font-medium my-2">
+              Linha <span className="text-red-600">*</span>
+            </label>
+            <select
+              id="linha"
+              name="linha"
+              className="p-4 bg-transparent border border-gray-300 rounded-lg w-full text-lg font-medium"
+              onChange={(e) => setLinhaSelecionada(Number(e.target.value))}
+              value={linhaSelecionada ?? ""}
+            >
+              <option value="">Selecione uma linha</option>
+              {linhas.map((linha: any) => (
+                <option key={linha.linha_id} value={linha.linha_id}>
+                  {linha.nome}
+                </option>
+              ))}
+            </select>
+
+            {/* Estação */}
+            <label htmlFor="estacao" className="font-medium my-2">
+              Estação <span className="text-red-600">*</span>
+            </label>
+            <select
+              id="estacao"
+              name="estacao"
+              className="p-4 bg-transparent border border-gray-300 rounded-lg w-full text-lg font-medium"
+              onChange={(e) => setEstacaoSelecionada(Number(e.target.value))}
+              value={estacaoSelecionada ?? ""}
+            >
+              <option value="">Selecione uma estação</option>
+              {estacoes.map((estacao: any) => (
+                <option key={estacao.estacao_id} value={estacao.estacao_id}>
+                  {estacao.nome}
+                </option>
+              ))}
+            </select>
+
+            {/* Mensagem */}
             <label htmlFor="mensagem" className="font-medium my-2">
-              Mensagem{" "}
-              <span className="text-red-600" aria-label="campo obrigatório">
-                *
-              </span>
+              Mensagem <span className="text-red-600">*</span>
             </label>
             <textarea
               name="mensagem"
@@ -68,11 +133,12 @@ export default function Contato() {
               onChange={(ev) => setMessage(ev.target.value)}
             ></textarea>
           </div>
+
+          {/* Botão */}
           <button
             type="button"
             onClick={handleSendMessage}
             className="bg-black flex items-center h-14 w-56 rounded-full text-white font-semibold px-6 py-3 relative cursor-pointer"
-            aria-label="Enviar mensagem"
           >
             Enviar mensagem
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-black absolute right-2">

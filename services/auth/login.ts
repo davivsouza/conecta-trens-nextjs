@@ -1,5 +1,6 @@
 "use client";
-import { api } from "./api";
+
+import { api } from "../api";
 
 interface LoginProps {
   email: string;

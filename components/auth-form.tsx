@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { login } from "@/services/login";
-import { registerUser } from "@/services/register";
+import { login } from "@/services/auth/login";
+import { registerUser } from "@/services/auth/register";
 
 interface AuthFormProps {
   type: "login" | "cadastro";
@@ -51,15 +51,15 @@ export function AuthForm({ type }: AuthFormProps) {
           setIsLoading(false);
           return;
         }
-        const response = await registerUser(formData);
+        await registerUser(formData);
+        toast.success("Cadastro realizado com sucesso!");
+        router.push("/login");
       }
 
-      const response = await login({
+      await login({
         email: formData.email,
         senha: formData.senha,
       });
-
-      console.log(response);
 
       toast.success("Login realizado com sucesso!");
 
