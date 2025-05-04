@@ -4,7 +4,8 @@ import { ShowClockAndLocal } from "@/components/show-clock-and-local";
 import { Clock, MapPin, Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface Props {
   isHome?: boolean;
@@ -12,12 +13,21 @@ interface Props {
 }
 
 export function Header({ isHome, isContact }: Props) {
+  const [user, setUser] = useState<any>();
   const [showClockAndLocal, setShowClockAndLocal] = useState<"local" | "clock">(
     "local"
   );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  function handleLogout() {
+    localStorage.removeItem("user");
+    router.push("/login");
+  }
 
-  const user = JSON.parse(localStorage.getItem("user")!);
+  useEffect(() => {
+    const localUserData = JSON.parse(localStorage.getItem("user")!);
+    setUser(localUserData);
+  }, []);
 
   return (
     <header className="w-full max-w-[1000px] mx-auto h-[110px] flex items-center justify-between px-4 absolute top-0 left-1/2 transform -translate-x-1/2 z-20">
@@ -63,7 +73,7 @@ export function Header({ isHome, isContact }: Props) {
                     <Link href="/login">{user.nome}</Link>
                   </li>
                   <li
-                    onClick={() => localStorage.removeItem("user")}
+                    onClick={handleLogout}
                     className="cursor-pointer text-red-500"
                   >
                     Sair

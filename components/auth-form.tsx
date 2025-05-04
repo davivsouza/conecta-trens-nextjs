@@ -61,7 +61,7 @@ export function AuthForm({ type }: AuthFormProps) {
 
       console.log(response);
 
-      toast.success("A senha deve ter pelo menos 8 caracteres");
+      toast.success("Login realizado com sucesso!");
 
       router.push("/");
     } catch (error) {
