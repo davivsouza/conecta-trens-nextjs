@@ -64,6 +64,7 @@ export function Header({ isHome, isContact }: Props) {
               <li>
                 <Link href="/comprovantes">Comprovantes</Link>
               </li>
+
               {user.nome && (
                 <>
                   <li>

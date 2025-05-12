@@ -96,7 +96,6 @@ export function LinhasForm({ label, title, isEstacoes }: Props) {
           setSelectedStation(nearest.name);
         },
         (error) => {
-          console.error("Erro ao obter localização:", error);
           setError(
             "Não foi possível obter sua localização atual. Por favor, selecione uma estação manualmente."
           );
